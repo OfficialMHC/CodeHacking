@@ -1376,7 +1376,7 @@ pre code {
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6;
+  border: 1px solid #dee2e6 !important;
 }
 .table-bordered th,
 .table-bordered td {

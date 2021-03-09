@@ -14,11 +14,12 @@
                 <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Users List</h6>
 
                 <div class="table-wrapper table-responsive">
-                    <table id="usersDataTable" class="table display responsive nowrap">
+                    <table id="usersDataTable" class="table table-bordered table-striped table-hover display responsive nowrap">
                         <thead>
                         <tr>
                             <th class="wd-5p">ID</th>
-                            <th class="wd-20p">Name</th>
+                            <th class="wd-5p">Photo</th>
+                            <th class="wd-15p">Name</th>
                             <th class="wd-10p">Role</th>
                             <th class="wd-20p">E-mail</th>
                             <th class="wd-10p">Status</th>
@@ -33,16 +34,20 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>
-                                        <img src="{{ $user->photo ? $user->photo->photo_path : 'no photo' }}" alt="user photo" width="50" height="50" class="img-thumbnail rounded-circle"> {{ $user->name }}
+                                        <img src="{{ $user->photo ? $user->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" width="50" height="50" class="img-thumbnail rounded-circle">
                                     </td>
+                                    <td>{{ $user->name }}</td>
                                     <td>{{ $user->role->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->is_active == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
                                     <td>{{ $user->updated_at->diffForHumans() }}</td>
                                     <td>
-                                        <button type="submit" class="btn btn-sm btn-primary rounded-0"><i class="ion-edit"></i></button>
-                                        <button type="submit" class="btn btn-sm btn-danger rounded-0"><i class="ion-trash-b"></i></button>
+                                        <div class="btn-group">
+                                            <a href="" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="ion-ios-eye"></i></a>
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
+                                            <button type="submit" class="btn btn-sm btn-danger rounded-0"><i class="ion-trash-b"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

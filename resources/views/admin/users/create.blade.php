@@ -15,6 +15,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="br-section-wrapper">
                         <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-10">CREATE USER</h6>
+                        <hr>
 
                         {!! Form::open(['action' => 'App\Http\Controllers\AdminUsersController@store', 'method' => 'POST', 'files' => true]) !!}
                         @csrf
