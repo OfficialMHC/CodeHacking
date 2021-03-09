@@ -6,6 +6,6 @@
     </div><!-- menu-item -->
 </a><!-- br-menu-link -->
 <ul class="br-menu-sub nav flex-column">
-    <li class="nav-item"><a href="" class="nav-link">Create</a></li>
-    <li class="nav-item"><a href="" class="nav-link">Manage</a></li>
+    <li class="nav-item"><a href="{{ route('users.create') }}" class="nav-link">Create</a></li>
+    <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">Manage</a></li>
 </ul>

@@ -9,14 +9,52 @@
             </nav>
         </div><!-- br-pageheader -->
 
-    {!! Form::open(['action' => 'App\Http\Controllers\AdminUsersController@store', 'method' => 'POST', 'files' => true]) !!}
-    @csrf
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        <div class="br-pagebody">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3"></div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="br-section-wrapper">
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-10">CREATE USER</h6>
+
+                        {!! Form::open(['action' => 'App\Http\Controllers\AdminUsersController@store', 'method' => 'POST', 'files' => true]) !!}
+                        @csrf
+                        <div class="form-group">
+                            {!! Form::label('name', 'Name') !!}
+                            {!! Form::text('name', null, ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('email', 'Email') !!}
+                            {!! Form::email('email', null, ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('role_id', 'Role') !!}
+                            {!! Form::select('role_id', ['' =>'--- Select ---'] + $roles, null, ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('is_active', 'Status') !!}
+                            {!! Form::select('is_active', [1 => 'Active', 0 => 'Inactive'], 0, ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('photo_id', 'Photo') !!}
+                            {!! Form::file('photo_id', ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('password', 'Password') !!}
+                            {!! Form::password('password', ['class' => 'form-control form-control-sm']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-primary btn-block']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
+                        @include('includes.form-errors')
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3"></div>
+            </div>
         </div>
 
-    {!! Form::close() !!}
 @endsection
 
 </x-admin-master>

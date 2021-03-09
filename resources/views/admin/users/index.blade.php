@@ -21,9 +21,9 @@
                             <th class="wd-20p">Name</th>
                             <th class="wd-10p">Role</th>
                             <th class="wd-20p">E-mail</th>
-                            <th class="wd-10p">Active</th>
-                            <th class="wd-10p">Created At</th>
-                            <th class="wd-10p">Updated At</th>
+                            <th class="wd-10p">Status</th>
+                            <th class="wd-10p">Created</th>
+                            <th class="wd-10p">Updated</th>
                             <th class="wd-15p">Action</th>
                         </tr>
                         </thead>
@@ -32,7 +32,9 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>
+                                        <img src="{{ $user->photo ? $user->photo->photo_path : 'no photo' }}" alt="user photo" width="50" height="50" class="img-thumbnail rounded-circle"> {{ $user->name }}
+                                    </td>
                                     <td>{{ $user->role->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->is_active == 1 ? 'Active' : 'Inactive' }}</td>
