@@ -16,6 +16,8 @@
     <link href="{{ asset('assets/lib/jquery-switchbutton/jquery.switchButton.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/lib/chartist/chartist.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bracket.css') }}">
@@ -77,11 +79,14 @@
 <script src="{{ asset('assets/lib/jquery.sparkline.bower/jquery.sparkline.min.js') }}"></script>
 <script src="{{ asset('assets/lib/d3/d3.js') }}"></script>
 <script src="{{ asset('assets/lib/rickshaw/rickshaw.min.js') }}"></script>
-
+<script src="{{ asset('assets/lib/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('assets/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
+<script src="{{ asset('assets/lib/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/bracket.js') }}"></script>
 <script src="{{ asset('assets/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+
 <script>
     $(function(){
         'use strict'
@@ -110,5 +115,8 @@
         }
     });
 </script>
+
+@yield('scripts')
+
 </body>
 </html>
