@@ -49,13 +49,13 @@
                         <tr>
                             <th class="wd-5p">ID</th>
                             <th class="wd-5p">Photo</th>
-                            <th class="wd-15p">Name</th>
+                            <th class="wd-20p">Name</th>
                             <th class="wd-10p">Role</th>
                             <th class="wd-20p">E-mail</th>
                             <th class="wd-10p">Status</th>
                             <th class="wd-10p">Created</th>
                             <th class="wd-10p">Updated</th>
-                            <th class="wd-15p">Action</th>
+                            <th class="wd-10p">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -76,10 +76,9 @@
                                         <div class="btn-group">
                                             <a href="" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="ion-ios-eye"></i></a>
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
-                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminUsersController@destroy', $user->id], 'method' => 'DELETE']) !!}
-                                                {!! Form::submit('DELETE', ['class' => 'btn btn-sm btn-danger rounded-0']) !!}
+                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminUsersController@destroy', $user->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
+                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
                                             {!! Form::close() !!}
-{{--                                            <button type="submit" class="btn btn-sm btn-danger rounded-0"><i class="ion-trash-b"></i></button>--}}
                                         </div>
                                     </td>
                                 </tr>
