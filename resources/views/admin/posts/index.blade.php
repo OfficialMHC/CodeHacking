@@ -72,7 +72,7 @@
                                         <div class="btn-group">
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
                                             {!! Form::open(['action' => ['App\Http\Controllers\AdminPostsController@destroy', $post->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
-                                            {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
+                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>

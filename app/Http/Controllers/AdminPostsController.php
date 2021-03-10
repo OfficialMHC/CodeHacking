@@ -110,6 +110,9 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        unlink(public_path() . $post->photo->photo_path);
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
