@@ -64,10 +64,10 @@
                                     <td>
                                         <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail">
                                     </td>
-                                    <td>{{ $post->user->name}}</td>
+                                    <td>{{ Str::limit($post->user->name, 15) }}</td>
                                     <td>{{ $post->category ? $post->category->name : 'Uncategorized' }}</td>
-                                    <td>{{ $post->title }}</td>
-                                    <td>{{ $post->body }}</td>
+                                    <td>{{ Str::limit($post->title, 15) }}</td>
+                                    <td>{{ Str::limit($post->body, 80) }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
