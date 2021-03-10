@@ -11,7 +11,37 @@
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">
-                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Users List</h6>
+                <div class="row">
+                    <div class="col-6">
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Users List</h6>
+                    </div>
+                    <div class="col-6">
+                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-success float-right rounded-0">CREATE USER</a>
+                    </div>
+                </div>
+
+                @if(Session::has('create-user'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('create-user') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @elseif(Session::has('update-user'))
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ session('update-user') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @elseif(Session::has('delete-user'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('delete-user') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                 <div class="table-wrapper table-responsive">
                     <table id="usersDataTable" class="table table-bordered table-striped table-hover display responsive nowrap">
@@ -46,7 +76,10 @@
                                         <div class="btn-group">
                                             <a href="" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="ion-ios-eye"></i></a>
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
-                                            <button type="submit" class="btn btn-sm btn-danger rounded-0"><i class="ion-trash-b"></i></button>
+                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminUsersController@destroy', $user->id], 'method' => 'DELETE']) !!}
+                                                {!! Form::submit('DELETE', ['class' => 'btn btn-sm btn-danger rounded-0']) !!}
+                                            {!! Form::close() !!}
+{{--                                            <button type="submit" class="btn btn-sm btn-danger rounded-0"><i class="ion-trash-b"></i></button>--}}
                                         </div>
                                     </td>
                                 </tr>

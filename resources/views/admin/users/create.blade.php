@@ -44,7 +44,7 @@
                             {!! Form::password('password', ['class' => 'form-control form-control-sm']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-primary btn-block']) !!}
+                            {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-success btn-block']) !!}
                         </div>
 
                         {!! Form::close() !!}
