@@ -48,13 +48,11 @@
                         <thead>
                         <tr>
                             <th class="wd-5p">ID</th>
-                            <th class="wd-30p">Photo</th>
+                            <th class="wd-20p">Photo</th>
                             <th class="wd-15p">Owner</th>
-                            <th class="wd-5p">Category</th>
-                            <th class="wd-10p">Title</th>
-                            <th class="wd-10p">Description</th>
-                            <th class="wd-10p">Created At</th>
-                            <th class="wd-10p">Updated At</th>
+                            <th class="wd-10p">Category</th>
+                            <th class="wd-15p">Title</th>
+                            <th class="wd-30p">Description</th>
                             <th class="wd-5p">Action</th>
                         </tr>
                         </thead>
@@ -64,15 +62,12 @@
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td>
-{{--                                        <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" height="50" class="img-thumbnail">--}}
-                                        <img src="{{$post->photo->photo_path}}" alt="post photo" height="50" class="img-thumbnail">
+                                        <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail">
                                     </td>
                                     <td>{{ $post->user->name}}</td>
                                     <td>{{ $post->category_id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->body }}</td>
-                                    <td>{{ $post->created_at->diffForHumans() }}</td>
-                                    <td>{{ $post->updated_at->diffForHumans() }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
