@@ -65,7 +65,7 @@
                                         <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail">
                                     </td>
                                     <td>{{ $post->user->name}}</td>
-                                    <td>{{ $post->category_id }}</td>
+                                    <td>{{ $post->category ? $post->category->name : 'Uncategorized' }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->body }}</td>
                                     <td>

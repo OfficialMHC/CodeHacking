@@ -51,7 +51,7 @@ class AdminUsersController extends Controller
 
         if ($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('images/users', $name);
+            $file->move('images', $name);
             $photo = Photo::create(['photo_path' => $name]);
             $input['photo_id'] = $photo->id;
         }
@@ -105,7 +105,7 @@ class AdminUsersController extends Controller
 
         if ($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('images/users', $name);
+            $file->move('images', $name);
             $photo = Photo::create(['photo_path' => $name]);
             $input['photo_id'] = $photo->id;
         }

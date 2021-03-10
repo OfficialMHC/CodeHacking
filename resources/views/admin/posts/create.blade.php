@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('category_id', 'Category') !!}
-                            {!! Form::select('category_id', [1 =>'PHP', 2 => 'Laravel'] , null, ['class' => 'form-control form-control-sm']) !!}
+                            {!! Form::select('category_id', ['' =>'--- Select ---'] + $categories , null, ['class' => 'form-control form-control-sm']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('photo_id', 'Photo') !!}
