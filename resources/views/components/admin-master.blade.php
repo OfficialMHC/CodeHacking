@@ -21,6 +21,8 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bracket.css') }}">
+
+    @yield('styles')
 </head>
 
 <body>
@@ -33,6 +35,8 @@
         <x-sidebar-menu-links.admin-dashboard-link></x-sidebar-menu-links.admin-dashboard-link>
         <!-- Admin Categories Link -->
         <x-sidebar-menu-links.admin-categories-links></x-sidebar-menu-links.admin-categories-links>
+        <!-- Admin Medias Link -->
+        <x-sidebar-menu-links.admin-medias-links></x-sidebar-menu-links.admin-medias-links>
         <!-- Admin Posts Link -->
         <x-sidebar-menu-links.admin-posts-links></x-sidebar-menu-links.admin-posts-links>
         <!-- Admin Users Link -->
