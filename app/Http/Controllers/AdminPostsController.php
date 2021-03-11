@@ -8,6 +8,7 @@ use App\Models\Photo;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
 {
@@ -52,6 +53,7 @@ class AdminPostsController extends Controller
         }
 
         $user->posts()->create($input);
+        Session::flash('create-post', 'Post has been CREATED Successfully!');
         return redirect()->route('posts.index');
     }
 
@@ -98,7 +100,7 @@ class AdminPostsController extends Controller
         }
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
-
+        Session::flash('update-post', 'Post has been UPDATED Successfully!');
         return redirect()->route('posts.index');
     }
 
@@ -113,6 +115,7 @@ class AdminPostsController extends Controller
         $post = Post::findOrFail($id);
         unlink(public_path() . $post->photo->photo_path);
         $post->delete();
+        Session::flash('delete-post', 'Post has been DELETED Successfully!');
         return redirect()->route('posts.index');
     }
 }
