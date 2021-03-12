@@ -13,30 +13,23 @@
             <div class="br-section-wrapper">
                 <div class="row">
                     <div class="col-6">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="fa fa-comments" aria-hidden="true"></i> Comment List</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="fa fa-comments" aria-hidden="true"></i> Comments List</h6>
                     </div>
                     <div class="col-6">
 {{--                        <a href="{{ route('posts.create') }}" class="btn btn-sm btn-success float-right rounded-0">CREATE POST</a>--}}
                     </div>
                 </div>
 
-                @if(Session::has('create-post'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('create-post') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @elseif(Session::has('update-post'))
+                @if(Session::has('update-comment'))
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        {{ session('update-post') }}
+                        {{ session('update-comment') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                @elseif(Session::has('delete-post'))
+                @elseif(Session::has('delete-comment'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('delete-post') }}
+                        {{ session('delete-comment') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -74,8 +67,21 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminPostsController@destroy', $comment->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
-                                            {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
+
+                                            @if ($comment->is_active ==1)
+                                            {!! Form::open(['action' => ['App\Http\Controllers\PostCommentsController@update', $comment->id], 'method' => 'PATCH', 'onsubmit' => 'return confirm("Are You Sure to Un-Approve this?")']) !!}
+                                                <input type="hidden" name="is_active" value="0">
+                                                {{ Form::submit('Un-Approve', ['class' => 'btn btn-sm btn-info rounded-0 mr-2'] )  }}
+                                            {!! Form::close() !!}
+                                            @else
+                                            {!! Form::open(['action' => ['App\Http\Controllers\PostCommentsController@update', $comment->id], 'method' => 'PATCH', 'onsubmit' => 'return confirm("Are You Sure to Approve this?")']) !!}
+                                                <input type="hidden" name="is_active" value="1">
+                                                {{ Form::submit('Approve', ['class' => 'btn btn-sm btn-success rounded-0 mr-2'] )  }}
+                                            {!! Form::close() !!}
+                                            @endif
+
+                                            {!! Form::open(['action' => ['App\Http\Controllers\PostCommentsController@destroy', $comment->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
+                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>

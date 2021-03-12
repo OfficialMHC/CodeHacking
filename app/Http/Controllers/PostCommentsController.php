@@ -42,7 +42,6 @@ class PostCommentsController extends Controller
 
         $data = [
             'post_id' => $request->post_id,
-            'is_active' => $user->is_active,
             'author' => $user->name,
             'photo' => $user->photo_id,
             'email' => $user->email,
@@ -85,7 +84,9 @@ class PostCommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::findOrFail($id)->update($request->all());
+        Session::flash('update-comment', 'Comment has been ' . ($request->is_active == 1 ? 'Approve' : 'Un-Approve') . ' Successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -96,6 +97,8 @@ class PostCommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::findOrFail($id)->delete();
+        Session::flash('delete-comment', 'Comment has been DELETED Successfully!');
+        return redirect()->back();
     }
 }
