@@ -22,7 +22,7 @@
                                 </button>
                             </div>
                         @endif
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">EDIT POST</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-ios-list"></i> EDIT CATEGORY</h6>
 
                         <div class="table-wrapper table-responsive">
                             {!! Form::model($category, ['action' => ['App\Http\Controllers\AdminCategoriesController@update', $category->id], 'method' => 'PATCH']) !!}

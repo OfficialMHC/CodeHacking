@@ -13,7 +13,7 @@
             <div class="br-section-wrapper">
                 <div class="row">
                     <div class="col-6">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Users List</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-person"></i> Users List</h6>
                     </div>
                     <div class="col-6">
                         <a href="{{ route('users.create') }}" class="btn btn-sm btn-success float-right rounded-0">CREATE USER</a>

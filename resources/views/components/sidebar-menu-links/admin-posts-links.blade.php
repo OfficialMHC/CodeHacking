@@ -8,4 +8,5 @@
 <ul class="br-menu-sub nav flex-column">
     <li class="nav-item"><a href="{{ route('posts.create') }}" class="nav-link">Create</a></li>
     <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link">Manage</a></li>
+    <li class="nav-item"><a href="{{ route('comments.index') }}" class="nav-link">Comments</a></li>
 </ul>

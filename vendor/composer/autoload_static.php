@@ -526,7 +526,9 @@ class ComposerStaticInit9afc6c03b056efcd3970859211779348
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AdminCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCategoriesController.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AdminMediasController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminMediasController.php',
         'App\\Http\\Controllers\\AdminPostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPostsController.php',
         'App\\Http\\Controllers\\AdminUsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminUsersController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -552,6 +554,8 @@ class ComposerStaticInit9afc6c03b056efcd3970859211779348
         'App\\Http\\Requests\\UsersCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsersCreateRequest.php',
         'App\\Http\\Requests\\UsersEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsersEditRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
+        'App\\Models\\CommentReply' => __DIR__ . '/../..' . '/app/Models/CommentReply.php',
         'App\\Models\\Photo' => __DIR__ . '/../..' . '/app/Models/Photo.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',

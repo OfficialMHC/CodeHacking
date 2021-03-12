@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="br-section-wrapper">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">CREATE POST</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-ios-list"></i> CREATE CATEGORY</h6>
 
                         <div class="table-wrapper table-responsive">
                             {!! Form::open(['action' => 'App\Http\Controllers\AdminCategoriesController@store', 'method' => 'POST']) !!}
@@ -36,7 +36,7 @@
 
                 <div class="col-sm-12 col-md-8 col-lg-8">
                     <div class="br-section-wrapper">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Posts List</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-ios-list"></i> CATEGORIES List</h6>
 
                         @if(Session::has('create-category'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

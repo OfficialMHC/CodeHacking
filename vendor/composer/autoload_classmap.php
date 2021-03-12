@@ -8,7 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AdminCategoriesController' => $baseDir . '/app/Http/Controllers/AdminCategoriesController.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
+    'App\\Http\\Controllers\\AdminMediasController' => $baseDir . '/app/Http/Controllers/AdminMediasController.php',
     'App\\Http\\Controllers\\AdminPostsController' => $baseDir . '/app/Http/Controllers/AdminPostsController.php',
     'App\\Http\\Controllers\\AdminUsersController' => $baseDir . '/app/Http/Controllers/AdminUsersController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -34,6 +36,8 @@ return array(
     'App\\Http\\Requests\\UsersCreateRequest' => $baseDir . '/app/Http/Requests/UsersCreateRequest.php',
     'App\\Http\\Requests\\UsersEditRequest' => $baseDir . '/app/Http/Requests/UsersEditRequest.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
+    'App\\Models\\CommentReply' => $baseDir . '/app/Models/CommentReply.php',
     'App\\Models\\Photo' => $baseDir . '/app/Models/Photo.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',

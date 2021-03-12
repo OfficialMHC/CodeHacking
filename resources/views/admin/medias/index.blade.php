@@ -13,7 +13,7 @@
             <div class="br-section-wrapper">
                 <div class="row">
                     <div class="col-6">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Medias List</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-images"></i> Medias List</h6>
                     </div>
                     <div class="col-6">
                         <a href="{{ route('medias.create') }}" class="btn btn-sm btn-success float-right rounded-0">UPLOAD MEDIA</a>
@@ -35,9 +35,9 @@
                         <tr>
                             <th class="wd-5p">ID</th>
                             <th class="wd-30p">Photo</th>
-                            <th class="wd-25p">Created At</th>
-                            <th class="wd-25p">Updated At</th>
-                            <th class="wd-20p">Action</th>
+                            <th class="wd-30p">Created At</th>
+                            <th class="wd-30p">Updated At</th>
+                            <th class="wd-5p">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,9 +52,8 @@
                                     <td>{{ $photo->updated_at->diffForHumans() }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('medias.edit', $photo->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
                                             {!! Form::open(['action' => ['App\Http\Controllers\AdminMediasController@destroy', $photo->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
-                                            {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
+                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
                                             {!! Form::close() !!}
                                         </div>
                                     </td>

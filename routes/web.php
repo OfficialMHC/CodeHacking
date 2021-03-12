@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminMediasController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\CommentRepliesController;
+use App\Http\Controllers\PostCommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +32,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
+Route::get('/post/{id}', [AdminPostsController::class, 'post'])->name('home.post');
+
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/users', AdminUsersController::class);
     Route::resource('/admin/posts', AdminPostsController::class);
     Route::resource('/admin/categories', AdminCategoriesController::class);
     Route::resource('/admin/medias', AdminMediasController::class);
+    Route::resource('/admin/comments', PostCommentsController::class);
+    Route::resource('/admin/comment/replies', CommentRepliesController::class);
 });

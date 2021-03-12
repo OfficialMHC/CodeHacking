@@ -13,7 +13,7 @@
             <div class="br-section-wrapper">
                 <div class="row">
                     <div class="col-6">
-                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20">Posts List</h6>
+                        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-20"><i class="ion-ios-compose"></i> Posts List</h6>
                     </div>
                     <div class="col-6">
                         <a href="{{ route('posts.create') }}" class="btn btn-sm btn-success float-right rounded-0">CREATE POST</a>
@@ -64,10 +64,10 @@
                                     <td>
                                         <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail">
                                     </td>
-                                    <td>{{ Str::limit($post->user->name, 15) }}</td>
+                                    <td>{{ $post->user->name }}</td>
                                     <td>{{ $post->category ? $post->category->name : 'Uncategorized' }}</td>
-                                    <td>{{ Str::limit($post->title, 15) }}</td>
-                                    <td>{{ Str::limit($post->body, 80) }}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{{ Str::limit($post->body, 105) }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>

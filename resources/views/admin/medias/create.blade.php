@@ -15,7 +15,7 @@
 
         <div class="br-pagebody">
             <div class="br-section-wrapper">
-                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-10">UPLOAD MEDIA</h6>
+                <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-10"><i class="ion-images"></i> UPLOAD MEDIA</h6>
                 <hr>
 
                 {!! Form::open(['action' => 'App\Http\Controllers\AdminMediasController@store', 'method' => 'POST', 'class' => 'dropzone']) !!}
