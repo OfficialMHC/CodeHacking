@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\CommentReply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CommentRepliesController extends Controller
 {
@@ -91,7 +92,9 @@ class CommentRepliesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        CommentReply::findOrFail($id)->update($request->all());
+        Session::flash('update-reply', 'Reply has been ' . ($request->is_active == 1 ? 'Approved' : 'Un-Approved') . ' Successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -102,6 +105,8 @@ class CommentRepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CommentReply::findOrFail($id)->delete();
+        Session::flash('delete-reply', 'Reply has been DELETED Successfully!');
+        return redirect()->back();
     }
 }

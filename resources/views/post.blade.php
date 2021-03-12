@@ -78,17 +78,23 @@
 
                 @if(count($comment->replies) > 0)
                     @foreach($comment->replies as $reply)
-                    <div class="media mt-4">
-                        <img class="d-flex mr-3 rounded-circle" src="{{ $reply->photo }}" height="30" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">
-                                {{ $reply->author }}
-                                <small>{{ $reply->created_at->diffForHumans() }}</small>
-                            </h5>
-                            {{ $reply->body }}
+                        @if($reply->is_active == 1)
+                        <div class="media mt-4">
+                            <img class="d-flex mr-3 rounded-circle" src="{{ $reply->photo }}" height="30" alt="">
+                            <div class="media-body">
+                                <h5 class="mt-0">
+                                    {{ $reply->author }}
+                                    <small>{{ $reply->created_at->diffForHumans() }}</small>
+                                </h5>
+                                {{ $reply->body }}
+                            </div>
                         </div>
-                    </div>
+                        @else
+                            <h4 class="text-center">no replies available</h4>
+                        @endif
                     @endforeach
+                @else
+                    <h4 class="text-center">no replies available</h4>
                 @endif
 
                 <div class="comment-reply-container">
