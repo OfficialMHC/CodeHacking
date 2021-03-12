@@ -70,6 +70,8 @@
                                     <td>{{ Str::limit($post->body, 105) }}</td>
                                     <td>
                                         <div class="btn-group">
+                                            <a href="{{ route('home.post', $post->id) }}" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="ion-eye"></i></a>
+                                            <a href="{{ route('comments.show', $post->id) }}" class="btn btn-sm btn-teal rounded-0 mr-2"><i class="fa fa-comments"></i></a>
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="ion-edit"></i></a>
                                             {!! Form::open(['action' => ['App\Http\Controllers\AdminPostsController@destroy', $post->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
                                                 {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}

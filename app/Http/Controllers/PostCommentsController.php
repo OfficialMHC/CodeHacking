@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -49,7 +50,7 @@ class PostCommentsController extends Controller
         ];
 
         Comment::create($data);
-        $request->session()->flash('comment-message', 'Your comment has been submitted!');
+        $request->session()->flash('comment-message', 'Your comment has been submitted successfully & waiting for approving!');
         return redirect()->back();
     }
 
@@ -61,7 +62,10 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+
+        return view('admin.comments.show', compact('comments', 'post'));
     }
 
     /**
@@ -85,7 +89,7 @@ class PostCommentsController extends Controller
     public function update(Request $request, $id)
     {
         Comment::findOrFail($id)->update($request->all());
-        Session::flash('update-comment', 'Comment has been ' . ($request->is_active == 1 ? 'Approve' : 'Un-Approve') . ' Successfully!');
+        Session::flash('update-comment', 'Comment has been ' . ($request->is_active == 1 ? 'Approved' : 'Un-Approved') . ' Successfully!');
         return redirect()->back();
     }
 
