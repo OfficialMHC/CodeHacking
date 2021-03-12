@@ -39,8 +39,9 @@
                             <th class="wd-20p">Author</th>
                             <th class="wd-15p">Email</th>
                             <th class="wd-30p">Comment</th>
-                            <th class="wd-15p">Created At</th>
+                            <th class="wd-10p">Created At</th>
                             <th class="wd-5p">Post</th>
+                            <th class="wd-5p">Replies</th>
                             <th class="wd-5p">Action</th>
                         </tr>
                         </thead>
@@ -56,7 +57,10 @@
                                     <td>{{ Str::limit($comment->body, 105) }}</td>
                                     <td>{{ $comment->created_at->diffForHumans() }}</td>
                                     <td>
-                                        <a href="{{ route('home.post', $comment->post->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2">View Post</a>
+                                        <a href="{{ route('home.post', $comment->post->id) }}" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('replies.show', $comment->id) }}" class="btn btn-sm btn-primary rounded-0 mr-2"><i class="fa fa-reply-all"></i></a>
                                     </td>
                                     <td>
                                         <div class="btn-group">

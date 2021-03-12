@@ -194,7 +194,7 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ asset('front-end/js/blog-home-jquery.js') }}"></script>
+<script src="{{ asset('front-end/js/blog-home-jquery.min.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('front-end/js/blog-home-bootstrap.min.js') }}"></script>

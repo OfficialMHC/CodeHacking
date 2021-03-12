@@ -26,13 +26,6 @@
     <!-- Post Content -->
     <p>{{ $post->body }}</p>
 
-{{--    <blockquote class="blockquote">--}}
-{{--        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>--}}
-{{--        <footer class="blockquote-footer">Someone famous in--}}
-{{--            <cite title="Source Title">Source Title</cite>--}}
-{{--        </footer>--}}
-{{--    </blockquote>--}}
-
     <hr>
 
     @if(Session::has('comment-message'))
@@ -83,55 +76,53 @@
                 </h5>
                 {{ $comment->body }}
 
-                <div class="media mt-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                @if(count($comment->replies) > 0)
+                    @foreach($comment->replies as $reply)
+                    <div class="media mt-4">
+                        <img class="d-flex mr-3 rounded-circle" src="{{ $reply->photo }}" height="30" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">
+                                {{ $reply->author }}
+                                <small>{{ $reply->created_at->diffForHumans() }}</small>
+                            </h5>
+                            {{ $reply->body }}
+                        </div>
+                    </div>
+                    @endforeach
+                @endif
+
+                <div class="comment-reply-container">
+                    <button class="toggle-reply btn btn-sm btn-dark mt-2">REPLY</button>
+
+                    <div class="comment-reply">
+                        {!! Form::open(['action' => 'App\Http\Controllers\CommentRepliesController@createReply', 'method' => 'post']) !!}
+
+                        <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+
+                        <div class="form-group">
+                            {!! Form::textarea('body', null, ['class' => 'form-control mt-3', 'rows' => '1']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-dark']) !!}
+                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
-
-                {!! Form::open(['action' => 'App\Http\Controllers\CommentRepliesController@createReply', 'method' => 'post']) !!}
-
-                    <input type="hidden" name="comment_id" value="{{ $comment->id }}">
-
-                    <div class="form-group">
-                        {!! Form::label('body', 'Reply : ') !!}
-                        {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '1']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-dark']) !!}
-                    </div>
-                {!! Form::close() !!}
             </div>
         </div>
         @endforeach
     @endif
 
-    <!-- Comment with nested comments -->
-{{--    <div class="media mb-4">--}}
-{{--        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">--}}
-{{--        <div class="media-body">--}}
-{{--            <h5 class="mt-0">Commenter Name</h5>--}}
-{{--            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--}}
+@stop
 
-{{--            <div class="media mt-4">--}}
-{{--                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">--}}
-{{--                <div class="media-body">--}}
-{{--                    <h5 class="mt-0">Commenter Name</h5>--}}
-{{--                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--}}
-{{--                </div>--}}
-{{--            </div>--}}
+@section('scripts')
 
-{{--            <div class="media mt-4">--}}
-{{--                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">--}}
-{{--                <div class="media-body">--}}
-{{--                    <h5 class="mt-0">Commenter Name</h5>--}}
-{{--                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--    </div>--}}
+    <script>
+        $(document).ready(function(){
+            $(".comment-reply-container .toggle-reply").click(function (){
+                $(this).next().slideToggle("slow");
+            });
+        });
+    </script>
 
 @stop

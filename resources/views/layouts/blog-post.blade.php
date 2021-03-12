@@ -140,10 +140,12 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ asset('front-end/js/blog-post-jquery.js') }}"></script>
+<script src="{{ asset('front-end/js/blog-post-jquery.min.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('front-end/js/blog-post-bootstrap.min.js') }}"></script>
+
+@yield('scripts')
 
 </body>
 
