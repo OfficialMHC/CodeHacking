@@ -64,7 +64,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>
-                                        <img src="{{ $user->photo ? $user->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" width="50" height="50" class="img-thumbnail rounded-circle">
+                                        <img src="{{ $user->photo ? $user->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail rounded-circle">
                                     </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->role->name }}</td>
