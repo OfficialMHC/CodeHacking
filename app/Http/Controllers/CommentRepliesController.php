@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CommentReply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentRepliesController extends Controller
 {
@@ -35,6 +37,23 @@ class CommentRepliesController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function createReply(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = [
+            'comment_id' => $request->comment_id,
+            'author' => $user->name,
+            'photo' => $user->photo->photo_path,
+            'email' => $user->email,
+            'body' => $request->body
+        ];
+
+        CommentReply::create($data);
+        $request->session()->flash('reply-message', 'Your reply has been submitted successfully & waiting for approving!');
+        return redirect()->back();
     }
 
     /**

@@ -10,7 +10,7 @@ class CommentReply extends Model
     use HasFactory;
 
     protected $fillable = [
-        'post_id',
+        'comment_id',
         'is_active',
         'author',
         'photo',

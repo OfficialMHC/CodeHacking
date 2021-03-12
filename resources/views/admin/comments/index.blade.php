@@ -49,7 +49,7 @@
                                 <tr>
                                     <td>{{ $comment->id }}</td>
                                     <td>
-                                        <img src="{{ $comment->post->user->photo->photo_path }}" alt="author photo" class="img-thumbnail rounded-circle">
+                                        <img src="{{ $comment->photo }}" alt="author photo" class="img-thumbnail rounded-circle">
                                     </td>
                                     <td>{{ $comment->author }}</td>
                                     <td>{{ $comment->email }}</td>
