@@ -68,6 +68,8 @@
     @if(count($comments) > 0)
         @foreach($comments as $comment)
         <div class="media mb-4">
+{{--            If You using Gravatar then use it--}}
+{{--            <img class="d-flex mr-3 rounded-circle" src="{{ Auth::user()->gravatar }}" height="50" alt="">--}}
             <img class="d-flex mr-3 rounded-circle" src="{{ $comment->photo }}" height="50" alt="">
             <div class="media-body">
                 <h5 class="mt-0">
