@@ -8,6 +8,7 @@ use App\Models\Photo;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
@@ -19,7 +20,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        Paginator::useBootstrap();
+        $posts = Post::paginate(2);
         return view('admin.posts.index', compact('posts'));
     }
 

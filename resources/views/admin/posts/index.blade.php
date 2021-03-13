@@ -44,7 +44,7 @@
                 @endif
 
                 <div class="table-wrapper table-responsive">
-                    <table id="usersDataTable" class="table table-bordered table-striped table-hover display responsive nowrap">
+                    <table id="postsDataTable" class="table table-bordered table-striped table-hover display responsive nowrap">
                         <thead>
                         <tr>
                             <th class="wd-5p">ID</th>
@@ -84,6 +84,7 @@
                         </tbody>
                     </table>
                 </div><!-- table-wrapper -->
+                {{ $posts->links('pagination::bootstrap-4') }}
             </div><!-- br-section-wrapper -->
         </div><!-- br-pagebody -->
 
