@@ -7,57 +7,56 @@
         </div><!-- d-flex -->
 
         <div class="br-pagebody mg-t-5 pd-x-30">
-            <div class="row row-sm">
-                <div class="col-sm-6 col-xl-3">
-                    <div class="bg-teal rounded overflow-hidden">
-                        <div class="pd-25 d-flex align-items-center">
-                            <i class="ion ion-earth tx-60 lh-0 tx-white op-7"></i>
-                            <div class="mg-l-20">
-                                <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">Today's Visits</p>
-                                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1">1,975,224</p>
-                                <span class="tx-11 tx-roboto tx-white-6">24% higher yesterday</span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- col-3 -->
-                <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
-                    <div class="bg-danger rounded overflow-hidden">
-                        <div class="pd-25 d-flex align-items-center">
-                            <i class="ion ion-bag tx-60 lh-0 tx-white op-7"></i>
-                            <div class="mg-l-20">
-                                <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">Today Sales</p>
-                                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1">$329,291</p>
-                                <span class="tx-11 tx-roboto tx-white-6">$390,212 before tax</span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- col-3 -->
-                <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-                    <div class="bg-primary rounded overflow-hidden">
-                        <div class="pd-25 d-flex align-items-center">
-                            <i class="ion ion-monitor tx-60 lh-0 tx-white op-7"></i>
-                            <div class="mg-l-20">
-                                <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">% Unique Visits</p>
-                                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1">54.45%</p>
-                                <span class="tx-11 tx-roboto tx-white-6">23% average duration</span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- col-3 -->
-                <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-                    <div class="bg-br-primary rounded overflow-hidden">
-                        <div class="pd-25 d-flex align-items-center">
-                            <i class="ion ion-clock tx-60 lh-0 tx-white op-7"></i>
-                            <div class="mg-l-20">
-                                <p class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase tx-white-8 mg-b-10">Bounce Rate</p>
-                                <p class="tx-24 tx-white tx-lato tx-bold mg-b-2 lh-1">32.16%</p>
-                                <span class="tx-11 tx-roboto tx-white-6">65.45% on average time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- col-3 -->
-            </div><!-- row -->
+            <div class="br-section-wrapper">
+                <canvas id="myChart"></canvas>
+            </div>
         </div><!-- br-pagebody -->
 
     @endsection
+
+    @section('scripts')
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+            <script>
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Posts', 'Categories', 'Comments'],
+                        datasets: [{
+                            label: 'Data of CodeHacking',
+                            data: [{{ $postsCount }}, {{ $categoriesCount }}, {{ $commentsCount }}],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+
+    @endsection
+
 </x-admin-master>
