@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                @if(Auth::guest())
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/registration') }}">Register</a>
+                    </li>
+
+                @else
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Are You Sure to Logout?')">
+                            @csrf
+                            <button class="nav-link btn">Logout</button>
+                        </form>
+                    </li>
+
+                @endif
+            </ul>
+        </div>
+    </div>
+</nav>

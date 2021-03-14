@@ -120,11 +120,4 @@ class AdminPostsController extends Controller
         Session::flash('delete-post', 'Post has been DELETED Successfully!');
         return redirect()->route('posts.index');
     }
-
-    public function post($slug)
-    {
-        $post = Post::where('slug', $slug)->firstOrFail();
-        $comments = $post->comments()->whereIsActive(1)->get();
-        return view('post', compact('comments', 'post'));
-    }
 }

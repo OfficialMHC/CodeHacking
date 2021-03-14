@@ -62,7 +62,7 @@
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td>
-                                        <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" alt="user photo" class="img-thumbnail">
+                                        <img src="{{ $post->photo ? $post->photo->photo_path : $post->photoPlaceholder() }}" alt="user photo" class="img-thumbnail">
                                     </td>
                                     <td>{{ $post->user->name }}</td>
                                     <td>{{ $post->category ? $post->category->name : 'Uncategorized' }}</td>

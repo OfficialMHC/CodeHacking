@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminMediasController;
 use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\CommentRepliesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostCommentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,19 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+//Route::get('/', function () {
+//    return view('auth.login');
+//});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::get('/post/{id}', [AdminPostsController::class, 'post'])->name('home.post');
+Route::get('/post/{id}', [HomeController::class, 'post'])->name('home.post');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/users', AdminUsersController::class);
