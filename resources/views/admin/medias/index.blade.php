@@ -29,14 +29,33 @@
                     </div>
                 @endif
 
-                <div class="table-wrapper table-responsive">
+                <form action="{{ route('delete.media') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <select name="checkBoxArray" id="" class="form-control form-control-sm">
+                                    <option value="">Delete</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <button type="submit" name="deleteAll" class="btn btn-sm btn-primary" value="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper table-responsive">
                     <table id="usersDataTable" class="table table-bordered table-striped table-hover display responsive nowrap">
                         <thead>
                         <tr>
+                            <th class="wd-5p"><input type="checkbox" id="options"></th>
                             <th class="wd-5p">ID</th>
-                            <th class="wd-30p">Photo</th>
-                            <th class="wd-30p">Created At</th>
-                            <th class="wd-30p">Updated At</th>
+                            <th class="wd-55p">Photo</th>
+                            <th class="wd-15p">Created At</th>
+                            <th class="wd-15p">Updated At</th>
                             <th class="wd-5p">Action</th>
                         </tr>
                         </thead>
@@ -44,6 +63,7 @@
                         @if($photos)
                             @foreach($photos as $photo)
                                 <tr>
+                                    <td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" value="{{ $photo->id }}"></td>
                                     <td>{{ $photo->id }}</td>
                                     <td>
                                         <img src="{{ $photo->photo_path }}" alt="media photo" class="img-thumbnail" style="height: 100px">
@@ -52,9 +72,11 @@
                                     <td>{{ $photo->updated_at->diffForHumans() }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminMediasController@destroy', $photo->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}
-                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}
-                                            {!! Form::close() !!}
+{{--                                            {!! Form::open(['action' => ['App\Http\Controllers\AdminMediasController@destroy', $photo->id], 'method' => 'DELETE', 'onsubmit' => 'return confirm("Are You Sure to Delete this?")']) !!}--}}
+{{--                                                {{ Form::button('<i class="ion-trash-b"></i>', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger rounded-0'] )  }}--}}
+{{--                                            {!! Form::close() !!}--}}
+                                            <input type="hidden" name="photo" value="{{ $photo->id }}">
+                                            <button type="submit" class="btn btn-sm btn-danger rounded-0" name="deleteSingle" value="delete"><i class="ion-trash-b"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -63,8 +85,33 @@
                         </tbody>
                     </table>
                 </div><!-- table-wrapper -->
+                </form>
             </div><!-- br-section-wrapper -->
         </div><!-- br-pagebody -->
+
+
+
+    @endsection
+
+    @section('scripts')
+
+            <script>
+
+                $(document).ready(function () {
+                    $('#options').click(function () {
+                        if(this.checked) {
+                            $('.checkBoxes').each(function () {
+                                this.checked = true;
+                            });
+                        }else{
+                            $('.checkBoxes').each(function () {
+                                this.checked = false;
+                            });
+                        }
+                    });
+                });
+
+            </script>
 
     @endsection
 
