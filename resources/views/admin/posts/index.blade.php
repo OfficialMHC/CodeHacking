@@ -67,7 +67,7 @@
                                     <td>{{ $post->user->name }}</td>
                                     <td>{{ $post->category ? $post->category->name : 'Uncategorized' }}</td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{{ Str::limit($post->body, 105) }}</td>
+                                    <td>{!! Str::limit($post->body, 105) !!}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('home.post', $post->slug) }}" class="btn btn-sm btn-dark rounded-0 mr-2"><i class="ion-eye"></i></a>

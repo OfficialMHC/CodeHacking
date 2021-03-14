@@ -17,7 +17,6 @@ class Post extends Model
         return [
             'slug' => [
                 'source' => 'title',
-                'onUpdate' => true,
             ]
         ];
     }
@@ -47,5 +46,10 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function photoPlaceholder()
+    {
+        return "http://placehold.it/900x300";
     }
 }
