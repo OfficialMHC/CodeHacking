@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         Paginator::useBootstrap();
-        $posts = Post::paginate(2);
+        $posts = Post::paginate(4);
         $categories = Category::all();
 
         return view('front-end.home', compact('posts', 'categories'));

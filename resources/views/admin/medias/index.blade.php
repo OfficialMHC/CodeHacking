@@ -1,5 +1,9 @@
 <x-admin-master>
 
+    @section('styles')
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    @endsection
+
     @section('content')
         <div class="br-pageheader pd-y-15 pd-l-20">
             <nav class="breadcrumb pd-0 mg-0 tx-12">
@@ -94,6 +98,15 @@
     @endsection
 
     @section('scripts')
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+            @if(Session::has('delete-media'))
+                <script>
+                    toastr.success("{!! Session::get('delete-media') !!}");
+                </script>
+            @endif
 
             <script>
 

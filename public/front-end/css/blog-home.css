@@ -4,5 +4,56 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-blog-home/blob/master/LICENSE)
  */
 body {
-  padding-top: 56px;
+    font-family: Verdana;
+    padding-top: 56px;
+    background-color: #eeeeee;
+}
+.navbar {
+    background-color: #1d2939;
+}
+.navbar .navbar-brand {
+    font-family: Verdana;
+    font-size: 1.2rem;
+}
+.nav-item .nav-link{
+    font-size: 1.5rem;
+    color: #52b2a4 !important;
+}
+.nav-item form .btn {
+    font-size: 1.5rem;
+    color: red !important;
+}
+.card .card-header {
+    background-color: #FFFFFF;
+}
+.card .card-footer {
+    background-color: #FFFFFF;
+}
+.card .card-header .user-name {
+    font-size: .9rem;
+    margin-left: 15px;
+}
+.card .card-header .created-at {
+    font-size: .7rem;
+    margin-left: 15px;
+}
+.card .card-body p {
+    font-size: .85rem;
+    text-align: justify;
+}
+@media (max-width: 575px) {
+    .card .card-header .photo-col {
+        width: 45px;
+    }
+    .card .card-header .user-col {
+        width: 250px;
+    }
+}
+@media (max-width: 1199px) {
+    .card .card-header .user-name {
+        margin-left: 15px;
+    }
+    .card .card-header .created-at {
+        margin-left: 15px;
+    }
 }

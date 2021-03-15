@@ -6,35 +6,35 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+            <nav class="sticky-top">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm rounded-0" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-sm btn-dark rounded-0" type="button">GO!</button>
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+    <div class="row my-2">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
-
-            <h1 class="my-4">Page Heading
-                <small>Secondary Text</small>
-            </h1>
+        <div class="col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
 
             <!-- Blog Post -->
             @yield('content')
 
-            <!-- Pagination -->
-{{--            <ul class="pagination justify-content-center mb-4">--}}
-{{--                <li class="page-item">--}}
-{{--                    <a class="page-link" href="#">&larr; Older</a>--}}
-{{--                </li>--}}
-{{--                <li class="page-item disabled">--}}
-{{--                    <a class="page-link" href="#">Newer &rarr;</a>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
             {{ $posts->links('pagination::bootstrap-4') }}
-
-        </div>
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-            @include('includes.front-sidebar')
 
         </div>
 
