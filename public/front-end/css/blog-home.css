@@ -9,17 +9,22 @@ body {
     background-color: #ffffff;
 }
 .navbar {
+
     background-color: #1d2939;
 }
 .navbar .navbar-brand {
     font-family: Verdana;
     font-size: 1.2rem;
+    margin-bottom: 5px;
 }
 .nav-item .nav-link{
+    color: #FFFFFF !important;
+}
+.nav-item .nav-link i{
     font-size: 1.5rem;
     color: #52b2a4 !important;
 }
-.nav-item form .btn {
+.nav-item form .btn i {
     font-size: 1.5rem;
     color: red !important;
 }

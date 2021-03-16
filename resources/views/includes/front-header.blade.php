@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>CodeHacking | Blogging Site</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('front-end/css/blog-home-bootstrap.min.css') }}" rel="stylesheet">

@@ -27,7 +27,7 @@
     <hr>
 
     <!-- Post Content -->
-    <p>{!! $post->body !!}</p>
+    <div style="font-size: .95rem; text-align: justify">{!! $post->body !!}</div>
 
     <hr>
 
@@ -103,9 +103,10 @@
                             @endif
                         @endforeach
                     @else
-                        <h4 class="text-center">no replies available</h4>
+
                     @endif
 
+                    @if(Auth::check())
                     <div class="comment-reply-container">
                         <button class="toggle-reply btn btn-sm btn-dark rounded-0 my-3">REPLY</button>
 
@@ -123,6 +124,7 @@
                             {!! Form::close() !!}
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         @endforeach

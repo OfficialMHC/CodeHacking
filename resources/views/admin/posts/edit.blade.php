@@ -15,7 +15,7 @@
 
         <div class="br-pagebody">
                     <div class="br-section-wrapper">
-                        <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/400x400' }}" class="img-thumbnail img-fit-cover" alt="">
+                        <img src="{{ $post->photo ? $post->photo->photo_path : 'https://placehold.it/900x300' }}" class="img-thumbnail img-fit-cover" alt="">
                         <h6 class="tx-gray-800 tx-uppercase tx-bold tx-20 mg-b-10 mg-t-10">EDIT POST : {{ $post->title }}</h6>
                         <hr>
 
