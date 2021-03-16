@@ -2,24 +2,27 @@
 
 @section('content')
 
+    @include('includes.tiny-editor')
+
     <!-- Title -->
-    <h3 class="mt-4">{{ $post->title }}</h3>
+    <h5 class="mt-4">{{ $post->title }}</h5>
 
-    <!-- Author -->
-    <p class="lead">
-        by
-        <a href="#">{{ $post->user->name }}</a>
-    </p>
-
-    <hr>
-
-    <!-- Date/Time -->
-    <p><i class="fa fa-clock-o"></i> Posted on {{ $post->created_at->diffForHumans() }}</p>
+    <!-- Author & Date/Time -->
+    <div class="row">
+        <div class="col-sm-6">
+            <span>
+                by {{ $post->user->name }}
+            </span>
+        </div>
+        <div class="col-sm-6">
+            <span class="date-time float-sm-right"><i class="fa fa-clock-o"></i> Posted on {{ $post->created_at->diffForHumans() }}</span>
+        </div>
+    </div>
 
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{ $post->photo ? $post->photo->photo_path : $post->photoPlaceholder() }}" alt="">
+    <img class="img-fluid" src="{{ $post->photo ? $post->photo->photo_path : $post->photoPlaceholder() }}" alt="">
 
     <hr>
 
@@ -47,17 +50,17 @@
     <!-- Comments Form -->
     @if(Auth::check())
         <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
+            <h6 class="card-header">Leave a Comment:</h6>
             <div class="card-body">
                 {!! Form::open(['action' => 'App\Http\Controllers\PostCommentsController@store', 'method' => 'post']) !!}
 
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
 
                 <div class="form-group">
-                    {!! Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5']) !!}
+                    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('SUBMIT', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-dark rounded-0', 'style' => 'margin-bottom: -20px']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -72,23 +75,27 @@
                 {{--            <img class="d-flex mr-3 rounded-circle" src="{{ Auth::user()->gravatar }}" height="50" alt="">--}}
                 <img class="d-flex mr-3 rounded-circle" src="{{ $comment->photo }}" height="50" alt="">
                 <div class="media-body">
-                    <h5 class="mt-0">
+                    <h6 class="mt-0">
                         {{ $comment->author }}
                         <small>{{ $comment->created_at->diffForHumans() }}</small>
-                    </h5>
-                    {{ $comment->body }}
+                    </h6>
+                    <span class="comment-body">
+                        {{ $comment->body }}
+                    </span>
 
                     @if(count($comment->replies) > 0)
                         @foreach($comment->replies as $reply)
                             @if($reply->is_active == 1)
                                 <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="{{ $reply->photo }}" height="30" alt="">
+                                    <img class="d-flex mr-3 rounded-circle" src="{{ $reply->photo }}" height="40" alt="">
                                     <div class="media-body">
-                                        <h5 class="mt-0">
+                                        <h6 class="mt-0">
                                             {{ $reply->author }}
                                             <small>{{ $reply->created_at->diffForHumans() }}</small>
-                                        </h5>
-                                        {{ $reply->body }}
+                                        </h6>
+                                        <span class="reply-body">
+                                            {{ $reply->body }}
+                                        </span>
                                     </div>
                                 </div>
                             @else
@@ -100,7 +107,7 @@
                     @endif
 
                     <div class="comment-reply-container">
-                        <button class="toggle-reply btn btn-sm btn-dark mt-2">REPLY</button>
+                        <button class="toggle-reply btn btn-sm btn-dark rounded-0 my-3">REPLY</button>
 
                         <div class="comment-reply">
                             {!! Form::open(['action' => 'App\Http\Controllers\CommentRepliesController@createReply', 'method' => 'post']) !!}
@@ -108,10 +115,10 @@
                             <input type="hidden" name="comment_id" value="{{ $comment->id }}">
 
                             <div class="form-group">
-                                {!! Form::textarea('body', null, ['class' => 'form-control mt-3', 'rows' => '1']) !!}
+                                {!! Form::textarea('body', null, ['class' => 'form-control mt-3']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-dark']) !!}
+                                {!! Form::submit('SUBMIT', ['class' => 'btn btn-sm btn-dark rounded-0']) !!}
                             </div>
                             {!! Form::close() !!}
                         </div>
@@ -124,6 +131,7 @@
 @stop
 
 @section('scripts')
+
 
     <script>
         $(document).ready(function(){

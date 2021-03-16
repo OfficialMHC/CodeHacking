@@ -8,21 +8,7 @@
 
     <div class="row mt-4">
         <div class="col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
-            <nav class="sticky-top">
-                <div class="card">
-                    <div class="card-body">
-                        <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control form-control-sm rounded-0" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-sm btn-dark rounded-0" type="button">GO!</button>
-                            </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-
+            @include('includes.front_search')
         </div>
     </div>
 

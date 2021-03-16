@@ -38,11 +38,13 @@
                         </div>
                     </div>
                 </div>
-                <img src="{{ $post->photo ? $post->photo->photo_path : $post->photoPlaceholder() }}" alt="Card image cap">
+                <div>
+                    <img class="img-fluid"  src="{{ $post->photo ? $post->photo->photo_path : $post->photoPlaceholder() }}" alt="Card image cap">
+                </div>
                 <div class="card-footer">
                     <h6 class="card-title"><b>{{ $post->title }}</b></h6>
 
-                    <p class="card-text">{!! Str::limit($post->body, 320) !!}</p>
+                    <p class="card-text">{!! Str::limit($post->body, 350) !!}</p>
                     <a href="{{ route('home.post', $post->slug) }}" class="btn btn-sm btn-light float-right">Read More &rarr;</a>
                 </div>
             </div>

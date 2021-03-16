@@ -6,7 +6,7 @@
 body {
     font-family: Verdana;
     padding-top: 56px;
-    background-color: #eeeeee;
+    background-color: #ffffff;
 }
 .navbar {
     background-color: #1d2939;
@@ -37,9 +37,24 @@ body {
     font-size: .7rem;
     margin-left: 15px;
 }
-.card .card-body p {
+.card .card-footer p {
     font-size: .85rem;
     text-align: justify;
+}
+.date-time {
+    font-size: .8rem;
+}
+.comment-body {
+    font-size: .8rem;
+}
+.reply-body {
+    font-size: .8rem;
+}
+.comment-reply {
+    display: none;
+}
+#ch-footer {
+    font-size: .85rem;
 }
 @media (max-width: 575px) {
     .card .card-header .photo-col {
